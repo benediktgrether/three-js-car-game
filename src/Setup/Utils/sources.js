@@ -1,7 +1,12 @@
 export default [
     {
-        name: 'blenderBasicModel',
+        name: 'baked',
+        type: 'texture',
+        path: '/models/carmodel/baked.jpg'
+    },
+    {
+        name: 'blenderCarModel',
         type: 'gltfModel',
-        path: '/models/basicmodel/basic-model.glb'
+        path: '/models/carmodel/carmodel-02.glb'
     }
 ]

@@ -4,8 +4,6 @@ import ThreeJSApp from '../../Setup/ThreeJSApp';
 export default class BasicCube {
     constructor() {
 
-        console.log('Basic Cube Instance');
-
         this.threeJSApp = new ThreeJSApp();
         this.scene = this.threeJSApp.scene;
         this.resources = this.threeJSApp.resources;
@@ -31,7 +29,7 @@ export default class BasicCube {
 
     setMesh(){
         this.mesh = new THREE.Mesh(this.geometry, this.material);
+        this.mesh.position.y = 1 / 2;
         this.scene.add(this.mesh);
-        console.log('Mesh Instane: ', this.scene);
     }
 }

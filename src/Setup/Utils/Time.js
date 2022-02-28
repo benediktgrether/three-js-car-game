@@ -1,4 +1,6 @@
 import EventEmitter from "./EventEmitter";
+import ThreeJSApp from "../ThreeJSApp";
+import CANNON from 'cannon';
 
 export default class Time extends EventEmitter {
     constructor(){
@@ -10,23 +12,27 @@ export default class Time extends EventEmitter {
         this.elapsed = 0;
         this.delta = 16;
 
+        this.threeJSApp = new ThreeJSApp();
+        this.cannonWorld = this.threeJSApp.cannonWorld;
+
         window.requestAnimationFrame(() => {
-            this.tick();
+            this.updateAnimationFrame();
         })
     }
 
-    tick() {
+    updateAnimationFrame() {
         const currentTime = Date.now();
         this.delta = currentTime - this.current;
         this.current = currentTime;
         this.elapsed = this.current - this.start;
 
+        // this.cannonWorld.step(1 / 60, this.delta, 3);
 
-        // console.log(this.elapsed);
-        this.trigger('tick');
+
+        this.trigger('updateAnimationFrame');
 
         window.requestAnimationFrame(() => {
-            this.tick();
+            this.updateAnimationFrame();
         })
     }
 }
